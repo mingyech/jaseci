@@ -13,7 +13,7 @@ Any walker that can be called with `is_async` field
 ### **RESPONSE**
 ```json
 {
-	"task_id": "efd67095-a7a0-40db-8f89-6887ae56dbb3"
+    "task_id": "efd67095-a7a0-40db-8f89-6887ae56dbb3"
 }
 ```
 
@@ -24,33 +24,37 @@ Any walker that can be called with `is_async` field
 ### **RESPONSE**
 ```json
 {
-	"scheduled": {
-		"celery@BCSPH-LPA-0327": []
-	},
-	"active": {
-		"celery@BCSPH-LPA-0327": []
-	},
-	"reserved": {
-		"celery@BCSPH-LPA-0327": []
-	}
+    "scheduled": {
+        "celery@BCSPH-LPA-0327": []
+    },
+    "active": {
+        "celery@BCSPH-LPA-0327": []
+    },
+    "reserved": {
+        "celery@BCSPH-LPA-0327": []
+    }
 }
 ```
 
 ### **SPECIFIC TASK**
 `/js/walker_queue_check?task_id={{`**`task_id`**`}}`
+ - status check only
+
+`/js/walker_queue_wait?task_id={{`**`task_id`**`}}`
+ - will forcely wait for the result
 
 ### **RESPONSE**
 ```json
 {
-	"state": "SUCCESS",
+    "state": "SUCCESS",
 
     // will show if result is available
-	"result": {
-		"success": true,
-		"report": [
+    "result": {
+        "success": true,
+        "report": [
             ...
-		]
-	}
+        ]
+    }
 }
 ```
 
@@ -59,7 +63,7 @@ Any walker that can be called with `is_async` field
 ## **SCHEDULED_WALKER**
 
  - Add periodic task
- - Select jaseci.svc.task.task_common.scheduled_walker
+ - Select `jaseci.svc.task.common.ScheduledWalker`
  - set your schedule (interval, crontab, solar, clocked, start/end data are supported)
  - set argument with below kind of structure
 
@@ -68,10 +72,10 @@ Any walker that can be called with `is_async` field
 ```json
 {
     // Required
-	"name": "run",
+    "name": "run",
 
     // Required
-	"ctx": {},
+    "ctx": {},
 
     // Optional but may not have default
     // accepted value: urn | alias
@@ -79,7 +83,7 @@ Any walker that can be called with `is_async` field
 
     // Optional but may not have default
     // accepted value: urn | alias | global
-	"snt": "active:sentinel",
+    "snt": "active:sentinel",
 
     // Required
     // used also for getting aliases
@@ -87,10 +91,13 @@ Any walker that can be called with `is_async` field
 }
 ```
 
+----
+# **OPTIONAL FEATURES**
+
 ## **SCHEDULED_SEQUENCE**
 
  - Add periodic task
- - Select jaseci.svc.task.task_common.scheduled_sequence
+ - Select `jaseci.svc.task.common.ScheduledSequence`
  - set your schedule (interval, crontab, solar, clocked, start/end data are supported)
  - set argument with below kind of structure
 
