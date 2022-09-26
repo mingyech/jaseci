@@ -133,6 +133,10 @@ edge intent_transition {
     has intent;
 }
 
+edge entity_transition {
+    has entities;
+}
+
 graph dialogue_system {
     has anchor dialogue_root;
     spawn {
