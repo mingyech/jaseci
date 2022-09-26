@@ -27,9 +27,12 @@ node faq_root:cai_state {
     }
 }
 
-node faq_state {
+node faq_state:cai_state {
     has question;
     has answer;
+    can nlg {
+        visitor.response = here.answer;
+    }
 }
 
 walker ask {
