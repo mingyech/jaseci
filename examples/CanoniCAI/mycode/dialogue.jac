@@ -44,5 +44,6 @@ walker talk {
 walker init {
     root {
         spawn here --> graph::dialogue_system;
+        spawn here walker::talk;
     }
 }
