@@ -26,3 +26,9 @@ graph dialogue_system {
         dialogue_root -[intent_transition(intent="order a tesla")]-> how_to_order_state;
     }
 }
+
+walker init {
+    root {
+        spawn here --> graph::dialogue_system;
+    }
+}
